@@ -26,13 +26,17 @@
   <div class="layout">
     <Layout>
       <Header>
-        <Dropdown style="float:right; margin-right: 20px"   @on-click= "changeState">
+        <Dropdown style="float:right; margin-right: 20px" @on-click="changeState">
           <Button type="primary">
             {{selectedName}}
             <Icon type="ios-arrow-down"></Icon>
           </Button>
           <DropdownMenu slot="list" @on-visible-change="changeState">
-            <DropdownItem  v-for=" (item, index) in menuList" :key="index"  :name='index'>{{item.meta.title}}</DropdownItem>
+            <DropdownItem
+              v-for=" (item, index) in menuList"
+              :key="index"
+              :name="index"
+            >{{item.meta.title}}</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </Header>
@@ -43,21 +47,25 @@
   </div>
 </template>
 <script>
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-        menuList: [],
-        selectedName:""
+      menuList: [],
+      selectedName: ""
     };
   },
-    created() {
+  created() {
     this.menuList = this.$store.state.user.menuList;
-    this.selectedName =  this.menuList[0].meta.title;
+    this.selectedName = this.menuList[0].meta.title;
   },
-  methods:{
-    changeState(name){
-      debugger
- this.selectedName = name
+  methods: {
+    ...mapMutations(["setSlideMenu"]),
+    changeState(index) {
+      // debugger
+      this.selectedName = this.menuList[index].meta.title;
+      this.setSlideMenu(index);
+      this.$router.push({ name: "carList" });
     }
   }
 };

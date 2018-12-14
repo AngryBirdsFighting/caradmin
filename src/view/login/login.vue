@@ -51,7 +51,7 @@ let user = new User()
                        if(!err){
                            vm.setUserId(res.data.userId)
                            vm.getUserMenu().then((res) => {
-                               vm.$router.push({name: "carList"})
+                               vm.$router.push({name: "goodsList"})
                            }).catch((err) => {
                                alert(err)
                            })

@@ -27,6 +27,7 @@ export default {
             state.resource = resource
         },
         setSlideMenu(state, index){
+            debugger
             state.slideMenu =  state.menuList[index].children
         },
         setMenuList(state, menus) {

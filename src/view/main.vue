@@ -7,7 +7,7 @@
           :menuList="menuList[0].children"
           @on-open-change="menuChange"
           :openName="selectedArray"
-          :activeName="selected"    
+          :activeName="selected"
           @on-select="toPage"
         ></slide-menu>
       </Sider>
@@ -31,7 +31,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      menuList: [],
+      // menuList: [],
       spanLeft: 3,
       spanRight: 21,
       menuStyle: true,
@@ -40,23 +40,23 @@ export default {
     };
   },
   components: {
-    "slide-menu": slideMenu,
+    "slide-menu": slideMenu
     // "header-bar": headerBar
     // "collapsed-menu": collapsedMenu
   },
   computed: {
     height() {
-        
       let h = window.innerHeight - 171;
       return h;
     },
     iconSize() {
       return this.spanLeft === 3 ? 14 : 24;
+    },
+    menuList() {
+      return this.$store.state.user.slideMenu;
     }
   },
-  created() {
-    this.menuList = this.$store.state.user.menuList;
-  },
+  created() {},
   methods: {
     toggleClick() {
       if (this.spanLeft === 3) {
