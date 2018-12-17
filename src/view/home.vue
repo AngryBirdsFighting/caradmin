@@ -60,12 +60,9 @@ export default {
     this.selectedName = this.menuList[0].meta.title;
   },
   methods: {
-    ...mapMutations(["setSlideMenu"]),
     changeState(index) {
-      // debugger
       this.selectedName = this.menuList[index].meta.title;
-      this.setSlideMenu(index);
-      this.$router.push({ name: "carList" });
+      this.$router.push({ name:  this.menuList[index].children[0].children[0].name });
     }
   }
 };

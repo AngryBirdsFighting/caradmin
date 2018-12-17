@@ -4,10 +4,11 @@
     <Layout>
       <Sider hide-trigger :style="{background: '#fff',paddingBottom:'24px' }">
         <slide-menu
-          :menuList="menuList[0].children"
+          ref="slideMenu"
+          :menuList="menuList"
           @on-open-change="menuChange"
           :openName="selectedArray"
-          :activeName="selected"    
+          :activeName="selected"
           @on-select="toPage"
         ></slide-menu>
       </Sider>
@@ -24,51 +25,40 @@
 </template>
 <script>
 import slideMenu from "./slideMenu/slideMenu.vue";
-// import collapsedMenu from "./collapsedMenu/collapsedMenu.vue";
-import headerBar from "./headerBar/headerBar.vue";
 
 import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      menuList: [],
-      spanLeft: 3,
-      spanRight: 21,
       menuStyle: true,
-      selected: "list",
-      selectedArray: ["goods"]
+      selected: "",
+      selectedArray: []
     };
   },
+  props: {
+    menuList: {
+      type: Array,
+      default: () => []
+    }
+  },
   components: {
-    "slide-menu": slideMenu,
-    "header-bar": headerBar
-    // "collapsed-menu": collapsedMenu
+    "slide-menu": slideMenu
   },
   computed: {
     height() {
-        
       let h = window.innerHeight - 171;
       return h;
-    },
-    iconSize() {
-      return this.spanLeft === 3 ? 14 : 24;
     }
   },
-  created() {
-    this.menuList = this.$store.state.user.menuList;
+  watch: {
+    $route(now, old) {
+      this.updateMenu();
+    }
+  },
+  mounted() {
+    this.updateMenu();
   },
   methods: {
-    toggleClick() {
-      if (this.spanLeft === 3) {
-        this.spanLeft = 1;
-        this.spanRight = 23;
-        this.menuStyle = false;
-      } else {
-        this.spanLeft = 3;
-        this.spanRight = 21;
-        this.menuStyle = true;
-      }
-    },
     toPage(name) {
       this.selected = name;
       let params = {};
@@ -76,6 +66,11 @@ export default {
     },
     menuChange(name) {
       this.selectedArray = name;
+    },
+    updateMenu() {
+      let arr = this.$route.path.split("/");
+      this.selected = arr[3];
+      this.selectedArray = [arr[2]];
     }
   }
 };

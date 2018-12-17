@@ -9,8 +9,16 @@ Vue.use(Router);
 
 const LOGIN_PAGE_NAME = "login"
 const router = new Router({
-  // mode: "history",
+  mode: "history",
   routes
+});
+router.onError((error) => {
+ const pattern = /Loading chunk (\d)+ failed/g;
+ const isChunkLoadFailed = error.message.match(pattern);
+ const targetPath = router.history.pending.fullPath;
+ if (isChunkLoadFailed) {
+  router.replace(targetPath);
+ }
 });
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()

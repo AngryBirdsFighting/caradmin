@@ -51,7 +51,8 @@ let user = new User()
                        if(!err){
                            vm.setUserId(res.data.userId)
                            vm.getUserMenu().then((res) => {
-                               vm.$router.push({name: "goodsList"})
+                            //    debugger 
+                               vm.$router.push({name: res.menus[0].children[0].children[0].name})
                            }).catch((err) => {
                                alert(err)
                            })

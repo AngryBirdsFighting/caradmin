@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Goods from "../../../api/goods.js";
+import Goods from "@api/goods.js";
 import iTable from "../../../components/table/table";
 import iPage from "../../../components/page/page";
 let goods = new Goods();
@@ -16,7 +16,7 @@ export default {
     return {
       columns: [
         {
-          title: "车辆名称",
+          title: "路灯名称",
           key: "name"
         },
         {

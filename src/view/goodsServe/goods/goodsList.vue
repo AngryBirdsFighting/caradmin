@@ -1,5 +1,6 @@
 <template>
   <div>
+    <i-tree></i-tree>
     <i-table v-if="goodsList.length > 0" :columns="columns" :goodsList="goodsList"></i-table>
     <i-page :listTotal="total"></i-page>
   </div>
@@ -9,6 +10,7 @@
 import Goods from "@api/goods.js";
 import iTable from "../../../components/table/table";
 import iPage from "../../../components/page/page";
+import iTree from "@com/tree/tree.vue"
 let goods = new Goods();
 export default {
   data() {
@@ -157,7 +159,8 @@ export default {
   },
   components: {
     "i-table": iTable,
-    "i-page": iPage
+    "i-page": iPage,
+    "i-tree":iTree
   },
   created() {
     let vm = this;

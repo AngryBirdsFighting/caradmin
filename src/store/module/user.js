@@ -10,7 +10,9 @@ export default {
         userId: "",
         access: [],
         menuList: [],
-        slideMenu:[],
+        carMenu:[],
+        goodsMenu:[],
+        lightMenu:[],
         resource: {},
     },
     getters: {
@@ -26,9 +28,14 @@ export default {
         setResource(state, resource){
             state.resource = resource
         },
-        setSlideMenu(state, index){
-            debugger
-            state.slideMenu =  state.menuList[index].children
+        setGoodsMenu(state, menus){           
+            state.goodsMenu =  menus
+        },
+        setCarMenu(state, menus){           
+            state.carMenu =  menus
+        },
+        setLightMenu(state, menus){           
+            state.lightMenu =  menus
         },
         setMenuList(state, menus) {
             
@@ -51,6 +58,9 @@ export default {
             return new Promise((resolve, reject) => {
                 userApi.getUserInfo({ id: state.userId }, function (res, err) {
                     if (!err) {
+                        commit("setGoodsMenu", res.data.menus[0])
+                        commit("setCarMenu", res.data.menus[1])
+                        commit("setLightMenu", res.data.menus[2])
                         commit("setMenuList", res.data.menus)
                         commit("setResource", res.data.resource)
                         resolve(res.data)
