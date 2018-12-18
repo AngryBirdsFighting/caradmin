@@ -14,3 +14,6 @@ export const setToken = (name, value) => {
     if (token) return token
     else return false
   }
+  export const removeToken = (name) => {
+    Cookies.remove(name); 
+  }

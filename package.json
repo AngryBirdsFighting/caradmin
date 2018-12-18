@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "element-ui": "^2.4.11",
     "es6-promise": "^4.2.5",
     "fetch-detector": "^1.0.1",
     "fetch-ie8": "^1.5.0",

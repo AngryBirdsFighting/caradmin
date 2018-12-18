@@ -12,3 +12,12 @@ export  const initRouterNode =  (data,a="") => {
   }
   return routers
 };
+
+// // 检查路由
+// export const verificationRouter = data => {
+//     if(data && data.length > 0){
+
+//     }else{
+        
+//     }
+// }

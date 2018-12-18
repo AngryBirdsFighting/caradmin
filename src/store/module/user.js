@@ -1,6 +1,5 @@
 
 import { setToken, getToken } from "../../util/tools"
-import AllRoutesData from "../../router/fullRouter"
 import router from "../../router/index.js"
 import { initRouterNode } from "../../util/menu.js"
 import UserApi from "../../api/user"
@@ -14,6 +13,7 @@ export default {
         goodsMenu:[],
         lightMenu:[],
         resource: {},
+        defaultPath: "",
     },
     getters: {
     },
@@ -37,8 +37,7 @@ export default {
         setLightMenu(state, menus){           
             state.lightMenu =  menus
         },
-        setMenuList(state, menus) {
-            
+        setMenuList(state, menus) {       
             let routers =  initRouterNode(menus)
             state.menuList = routers
             state.slideMenu =  state.menuList[0].children
@@ -50,7 +49,6 @@ export default {
     },
     actions: {
         getUserMenu({ commit, state, rootState }) {
-            
             if (!state.userId) {
                 let userId = getToken("userId")
                 commit("setUserId", userId)
@@ -58,12 +56,17 @@ export default {
             return new Promise((resolve, reject) => {
                 userApi.getUserInfo({ id: state.userId }, function (res, err) {
                     if (!err) {
-                        commit("setGoodsMenu", res.data.menus[0])
-                        commit("setCarMenu", res.data.menus[1])
-                        commit("setLightMenu", res.data.menus[2])
-                        commit("setMenuList", res.data.menus)
-                        commit("setResource", res.data.resource)
-                        resolve(res.data)
+                        if(res.data.menus && res.data.menus.length > 0){
+                            commit("setGoodsMenu", res.data.menus[0])
+                            commit("setCarMenu", res.data.menus[1])
+                            commit("setLightMenu", res.data.menus[2])
+                            commit("setMenuList", res.data.menus)
+                            commit("setResource", res.data.resource)
+                            resolve(res.data)
+                        }else{
+                            router.push({name:"401"})
+                        }
+                       
                     } else {
                         reject(err)
                     }

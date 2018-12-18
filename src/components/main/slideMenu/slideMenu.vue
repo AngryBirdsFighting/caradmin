@@ -16,7 +16,7 @@
             <Icon :type="item.meta.icon"></Icon>
             {{item.meta.title}}
           </template>
-          <div v-if="item.children">
+          <div v-if="item.children.length > 0">
             <Menu-item
               v-for="obj in item.children"
               :name="obj.name"

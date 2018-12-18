@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import routes from "./router.js";
-import { getToken } from "../util/tools";
+import { getToken, removeToken } from "../util/tools";
 import store from "../store/";
 import iView from 'iview'
 
@@ -12,15 +12,8 @@ const router = new Router({
   mode: "history",
   routes
 });
-router.onError((error) => {
- const pattern = /Loading chunk (\d)+ failed/g;
- const isChunkLoadFailed = error.message.match(pattern);
- const targetPath = router.history.pending.fullPath;
- if (isChunkLoadFailed) {
-  router.replace(targetPath);
- }
-});
 router.beforeEach((to, from, next) => {
+  debugger
   iView.LoadingBar.start()
   const token = getToken("userId")
   if (!token && to.name !== LOGIN_PAGE_NAME) {
@@ -45,7 +38,7 @@ router.beforeEach((to, from, next) => {
           next({ path: to.path })
         }
       }).catch(() => {
-        setToken('userId', "")
+        removeToken('userId')
         next({
           name: 'login'
         })

@@ -26,7 +26,8 @@
   <div class="layout">
     <Layout>
       <Header>
-        <Dropdown style="float:right; margin-right: 20px" @on-click="changeState">
+        <a style="float:right; margin-right: 10px" @click="loginOut">退出</a>
+        <Dropdown style="float:right; margin-right: 40px" @on-click="changeState">
           <Button type="primary">
             {{selectedName}}
             <Icon type="ios-arrow-down"></Icon>
@@ -34,6 +35,7 @@
           <DropdownMenu slot="list" @on-visible-change="changeState">
             <DropdownItem
               v-for=" (item, index) in menuList"
+              v-if ="item.children.length > 0"
               :key="index"
               :name="index"
             >{{item.meta.title}}</DropdownItem>
@@ -48,6 +50,7 @@
 </template>
 <script>
 import { mapMutations } from "vuex";
+import { removeToken } from "../util/tools.js";
 export default {
   data() {
     return {
@@ -62,7 +65,13 @@ export default {
   methods: {
     changeState(index) {
       this.selectedName = this.menuList[index].meta.title;
-      this.$router.push({ name:  this.menuList[index].children[0].children[0].name });
+      this.$router.push({
+        name: this.menuList[index].children[0].children[0].name
+      });
+    },
+    loginOut() {
+      removeToken("userId");
+      this.$router.push({ name: "login" });
     }
   }
 };
