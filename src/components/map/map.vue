@@ -1,25 +1,21 @@
 <template>
-   <div class= ''>
- <b-map  id= "allmap" class="map"></b-map>
-   </div>
+  <div>
+    <div id="allmap" class="map"></div>
+  </div>
 </template>
 
 <script>
-import BMap from 'BMap';
+import BMap from "BMap";
 export default {
-  data () {
-    return {}
-
-  },
-  components: {
-
+  data() {
+    return {};
   },
   mounted() {
-      this.ready();
+    this.ready();
   },
   methods: {
     ready: function() {
-      var map = new BMap.Map('allmap');
+      var map = new BMap.Map("allmap");
       var point = new BMap.Point(104.075796, 30.659684);
       map.centerAndZoom(point, 14);
       map.addControl(new BMap.MapTypeControl());
@@ -29,12 +25,11 @@ export default {
       map.addOverlay(marker);
     }
   }
- }
+};
 </script>
 
 <style>
-.map{
+.map {
   height: 250px;
 }
- 
 </style>

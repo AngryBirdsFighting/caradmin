@@ -2,12 +2,12 @@
   <div>
     <!-- <i-table v-if="goodsList.length > 0" :columns="columns" :goodsList="goodsList"></i-table>
     <i-page :listTotal="total"></i-page> -->
-    <b-map  id= "map" class="map"></b-map>
+    <i-map   class="map"></i-map>
   </div>
 </template>
 
 <script>
-import bMap from "@com/bMap/bMap.vue"
+import iMap from "@com/map/map.vue"
 export default {
   data() {
     let vm = this;
@@ -15,7 +15,7 @@ export default {
     };
   },
   components: {
-    "b-map": bMap
+    "i-map": iMap
   },
   created() {
     
@@ -24,7 +24,4 @@ export default {
 </script>
 
 <style>
-.map{
-  height: 250px;
-}
 </style>
