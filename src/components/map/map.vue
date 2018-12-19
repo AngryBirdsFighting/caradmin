@@ -15,14 +15,15 @@ export default {
   },
   methods: {
     ready: function() {
-      var map = new BMap.Map("allmap");
-      var point = new BMap.Point(104.075796, 30.659684);
-      map.centerAndZoom(point, 14);
-      map.addControl(new BMap.MapTypeControl());
-      map.enableScrollWheelZoom(true);
-      map.enableDoubleClickZoom(true);
-      var marker = new BMap.Marker(point);
-      map.addOverlay(marker);
+      var map = new BMap.Map("allmap");    // 创建Map实例
+      map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);  // 初始化地图,设置中心点坐标和地图级别
+      //添加地图类型控件
+      map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+                
+        ]
+      }));	  
+      map.enableScrollWheelZoom();//开启鼠标滚轮缩放
     }
   }
 };
