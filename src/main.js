@@ -16,6 +16,7 @@ Vue.component("eTree", Tree);
 Vue.directive('has', {
   bind (el, binding, vnode) {
       // let name = vnode.context.$route.name;
+      // let name = vnode.context.$route.name;
       let rules = vnode.context.$route.meta.rules
       if (!rules.includes(binding.value)) {
           el.parentNode.removeChild(el);
