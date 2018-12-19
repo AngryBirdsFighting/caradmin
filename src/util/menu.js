@@ -13,6 +13,17 @@ export  const initRouterNode =  (data,a="") => {
   return routers
 };
 
+// export  const initRouterNode =  (data,a="") => {
+//   let routers = []
+//   for (var item in data) {
+//     data[item].component = lazyLoading(data[item].component);
+//       if (data[item].children && data[item].children.length > 0) {
+//           initRouterNode(data[item].children);
+//       }
+//       routers.push(data[item]);
+//   }
+//   return routers
+// };
 // // 检查路由
 // export const verificationRouter = data => {
 //     if(data && data.length > 0){

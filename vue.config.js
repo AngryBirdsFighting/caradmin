@@ -27,9 +27,12 @@ module.exports = {
     productionSourceMap: false, // 调整内部的webpack配置. // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
     chainWebpack: config => {
       config.resolve.alias
-        .set("@view", resolve('src/view')) // key,value自行定义，比如.set('@@', resolve('src/components'))
+        .set("@view", resolve('src/view'))
         .set("@com", resolve('src/components'))
         .set("@api", resolve('src/api'))
+      config.externals({
+        "BMap": "BMap"
+      })
     },
     configureWebpack: () => {}, 
     // CSS 相关选项

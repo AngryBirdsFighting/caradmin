@@ -13,7 +13,7 @@ const router = new Router({
   routes
 });
 router.beforeEach((to, from, next) => {
-  debugger
+  
   iView.LoadingBar.start()
   const token = getToken("userId")
   if (!token && to.name !== LOGIN_PAGE_NAME) {

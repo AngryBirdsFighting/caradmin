@@ -11,5 +11,12 @@ class Common extends Fetch {
         }
         this.fetchAjax(pramas, callback)
     }
+    getTreeData(data = {}, callback){
+        let pramas = {
+            url: "/getTreeData",
+            data: data
+        }
+        this.fetchAjax(pramas, callback)
+    }
 }
 export default Common

@@ -1,0 +1,140 @@
+"menus":{
+    goodsServer: {
+      path: '/goodsServe',
+      name: 'goodsServe',
+      meta: {
+        isWeb: false,
+        title: '商品系统'
+      },
+      component: "/home",
+      children: [{
+          path: 'goods',
+          name: 'goods',
+          meta: {
+            isWeb: false,
+            icon: 'logo-buffer',
+            title: '商品管理'
+          },
+
+          component: "/goodsServe/goodsMain",
+          children: [{
+              path: 'goodsList',
+              name: 'goodsList',
+              meta: {
+                title: '商品列表',
+                isWeb: true,
+                rules: ["add", "delete"]
+              },
+              component: "/goodsServe/goods/goodsList",
+            },
+            {
+              path: 'userList',
+              name: 'userList',
+              meta: {
+                title: '会员列表',
+                isWeb: true,
+                rules: ["add", "delete"]
+              },
+              component: "/goodsServe/goods/userList",
+            }
+          ]
+        },
+        {
+          path: 'orders',
+          name: 'orders',
+          meta: {
+            isWeb: false,
+            icon: 'logo-buffer',
+            title: '订单管理'
+          },
+
+          component: "/goodsServe/goodsMain",
+          children: [{
+            path: 'ordersList',
+            name: 'ordersList',
+            meta: {
+              title: '订单列表',
+              isWeb: true,
+              rules: ["add", "delete"]
+            },
+            component: "/goodsServe/orders/ordersList",
+          }]
+        }
+      ]
+    },
+    carServer:{
+      path: '/carServe',
+      name: 'carServe',
+      meta: {
+        isWeb: false,
+        title: '车辆系统',
+      },
+      component: "/home",
+      children: [{
+        path: 'car',
+        name: 'car',
+        meta: {
+          isWeb: false,
+          icon: 'logo-buffer',
+          title: '车辆管理',
+        },
+        component: "/carServe/carMain",
+        children: [{
+            path: 'carList',
+            name: 'carList',
+            meta: {
+              title: '车辆列表',
+              isWeb: true,
+              rules: ["add", "delete"]
+            },
+            component: "/carServe/car/carList",
+          },
+    
+          {
+            path: 'driverList',
+            name: 'driverList',
+            meta: {
+              title: '驾驶员列表',
+              isWeb: true,
+              rules: ["add", "delete"]
+            },
+            component: "/carServe/car/driverList",
+          }
+        ]
+      }]
+    },
+    lightServe: {
+      path: '/lightServe',
+      name: 'lightServe',
+      meta: {
+        isWeb: false,
+        title: '路灯系统',
+      },
+      component: "/home",
+      children: [{
+        path: 'light',
+        name: 'light',
+        meta: {
+          isWeb: false,
+          icon: 'logo-buffer',
+          title: '路灯管理',
+        },
+        component: "/lightServe/lightMain",
+        children: [{
+          path: 'lightList',
+          name: 'lightList',
+          meta: {
+            title: '路灯列表',
+            isWeb: true,
+            rules: ["add", "delete"]
+          },
+          component: "/lightServe/light/lightList",
+        }]
+      }]
+    }
+  }
+
+
+  
+  
+

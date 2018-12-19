@@ -51,7 +51,8 @@ let user = new User()
                        if(!err){
                            vm.setUserId(res.data.userId)
                            vm.getUserMenu().then((res) => {
-                               vm.$router.push({name: res.menus[0].children[0].children[0].name})
+                               
+                               vm.$router.push({name: this.$store.state.user.defaultPath})
                            }).catch((err) => {
                                alert(err)
                            })
