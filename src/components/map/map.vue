@@ -30,6 +30,6 @@ export default {
 
 <style>
 .map {
-  height: 250px;
+  height: 100%;
 }
 </style>
