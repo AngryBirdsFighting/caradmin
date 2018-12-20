@@ -8,7 +8,7 @@
     <Layout class="table-content"   :style="{ height: height +'px'}">
       <Header>Header</Header>
       <Content>
-        <i-table v-if="goodsList.length > 0" :columns="columns" style="height:10vh" :goodsList="goodsList"></i-table>
+        <i-table v-if="goodsList.length > 0 &&  goodsType" :columns="columns" style="height:10vh" :goodsList="goodsList"></i-table>
       </Content>
       <Footer>
         <i-page :listTotal="total"></i-page>
@@ -51,7 +51,10 @@ export default {
                 return item;
               }
             });
-            return h("span", t.name);
+            if(t){
+ return h("span", t.name);
+            }
+           
           }
         },
         {
@@ -62,107 +65,7 @@ export default {
           title: "添加人",
           key: "createUser"
         },
-        {
-          title: "操作",
-          key: "action",
-          // minWidth: "400px",
-          align: "center",
-          render: (h, params) => {
-            return h("div", [
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "primary",
-                    size: "small"
-                  },
-                  style: {
-                    marginRight: "5px"
-                  },
-                  directives: [
-                    {
-                      name: "has",
-                      value: "add",
-                      arg: "add"
-                    }
-                  ],
-                  on: {
-                    click: () => {
-                      // this.show(params.index);
-                    }
-                  }
-                },
-                "add"
-              ),
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "error",
-                    size: "small"
-                  },
-                  directives: [
-                    {
-                      name: "has",
-                      value: "delete",
-                      arg: "delete"
-                    }
-                  ],
-                  on: {
-                    click: () => {
-                      // this.remove(params.index);
-                    }
-                  }
-                },
-                "delete"
-              ),
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "error",
-                    size: "small"
-                  },
-                  directives: [
-                    {
-                      name: "has",
-                      value: "edit",
-                      arg: "edit"
-                    }
-                  ],
-                  on: {
-                    click: () => {
-                      // this.remove(params.index);
-                    }
-                  }
-                },
-                "edit"
-              ),
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "error",
-                    size: "small"
-                  },
-                  directives: [
-                    {
-                      name: "has",
-                      value: "info",
-                      arg: "info"
-                    }
-                  ],
-                  on: {
-                    click: () => {
-                      // this.remove(params.index);
-                    }
-                  }
-                },
-                "info"
-              )
-            ]);
-          }
-        }
+      
       ],
       goodsList: [],
       total: 0,

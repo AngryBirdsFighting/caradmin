@@ -32,8 +32,8 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       store.dispatch('getUserMenu').then(res => {
-        if (to.name) {
-          next()
+        if (to.path == "/") {
+          next({ name: store.state.user.defaultPath })
         } else {
           next({ path: to.path })
         }
