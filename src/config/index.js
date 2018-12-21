@@ -3,7 +3,19 @@ export default class Config{
 
     }
 }
-Config.baseUrl = "https://www.easy-mock.com/mock/5bf6a81192b5d9334494e8c9/admin";
-
-Config.overtime = 20000000;
+let baseUrl = ""
+console.log(process.env.NODE_ENV)
+switch (process.env.NODE_ENV) {
+  case 'development':
+  baseUrl = "api"  //这里是本地的请求url
+      break
+  case 'test':  
+  baseUrl = "http://test"  //这里是测试环境中的url
+      break
+  case 'production':
+  baseUrl = "https://production"   //生产环境url
+      break
+}
+Config.baseUrl = baseUrl;
+Config.overtime = 20000000; // 请求超时时间
 

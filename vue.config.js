@@ -5,7 +5,7 @@ function resolve (dir) {
 }
 module.exports = {
     // 构建好的文件输出到哪里
-    baseUrl: "/", 
+    baseUrl: "./", 
     // where to put static assets (js/css/img/font/...) // 是否在保存时使用‘eslint-loader’进行检查 // 有效值: true | false | 'error' // 当设置为‘error’时，检查出的错误会触发编译失败
     outputDir: "dist", 
     // 使用带有浏览器内编译器的完整构建版本 // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
@@ -38,12 +38,12 @@ module.exports = {
       extract: true,
        // 允许生成 CSS source maps?
       sourceMap: false, 
-      // pass custom options to pre-processor loaders. e.g. to pass options to // sass-loader, use { sass: { ... } }
+      //将自定义选项传递给预处理器加载器。 例如 要将选项传递给// sass-loader，请使用{sass：{...}}
       loaderOptions: {}, 
-      // Enable CSS modules for all css / pre-processor files. // This option does not affect *.vue files.
+      // 为所有css /预处理器文件启用CSS模块。 //此选项不会影响* .vue文件。
       modules: false
     },
-     // use thread-loader for babel & TS in production build // enabled by default if the machine has more than 1 cores
+     // 如果机器具有多于1个核心，则默认情况下启用生产构建中的babel和TS的线程加载器
     parallel: require("os").cpus().length > 1, 
     // PWA 插件相关配置 // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
     pwa: {}, 
@@ -51,11 +51,15 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
-          target: 'http://127.0.0.1:3000',
+          target: "https://www.easy-mock.com/mock/5bf6a81192b5d9334494e8c9/admin",
           changeOrigin: true,
+          ws: true,
           pathRewrite: {                //需要rewrite重写的, 如果在服务器端做了处理则可以不要这段
             '^/api': ''
-          }   
+          },
+          historyApiFallback:{
+            index:'./public/index.html'//index.html为当前目录创建的template.html
+      }  
         },  
     }
       // before: app => {}

@@ -9,7 +9,7 @@ Vue.use(Router);
 
 const LOGIN_PAGE_NAME = "login"
 const router = new Router({
-  mode: "history",
+  mode: "hash",
   routes
 });
 router.beforeEach((to, from, next) => {
