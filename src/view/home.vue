@@ -34,8 +34,9 @@
           </Button>
           <DropdownMenu slot="list" @on-visible-change="changeState">
             <DropdownItem
+            
               v-for=" (item, index) in menuList"
-              v-if ="item.children.length > 0"
+            
               :key="index"
               :name="index"
             >{{item.meta.title}}</DropdownItem>
@@ -62,6 +63,9 @@ export default {
     this.menuList = this.$store.state.user.menuList;
     this.selectedName = this.menuList[0].meta.title;
   },
+   mounted() {
+     this.updateMenu()
+  },
   methods: {
     changeState(index) {
       this.selectedName = this.menuList[index].meta.title;
@@ -72,6 +76,14 @@ export default {
     loginOut() {
       removeToken("userId");
       this.$router.push({ name: "login" });
+    },
+       updateMenu() {
+      let arr = this.$route.path.split("/");
+      let sleteData =   this.menuList .find(item => {
+        return item.name == arr[1]
+      })
+
+    this.selectedName = sleteData.meta.title
     }
   }
 };
