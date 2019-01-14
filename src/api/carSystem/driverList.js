@@ -1,4 +1,4 @@
-import Common from "./common.js"
+import Common from "../common.js"
 
 class Driver extends Common {
     constructor(){

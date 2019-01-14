@@ -16,7 +16,7 @@
     </Form>
 </template>
 <script>
-import User from "../../api/user.js"
+import User from "../../api/carSystem/user.js"
 import { mapActions, mapMutations } from "vuex"
 let user = new User()
     export default {

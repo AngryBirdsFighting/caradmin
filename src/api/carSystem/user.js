@@ -1,22 +1,23 @@
-import Common from "./common.js"
+import { Fetch } from "../../fetch"
 
-class Goods extends Common {
+class User extends Fetch {
     constructor(){
         super()
     }
-    getList(callback){
+    login(data = {}, callback){
         let pramas = {
-            url: "/goodsList",
+            url: "/login",
+            data: data
         }
         this.fetchAjax(pramas, callback)
     }
-    addGoods(data, callback){
+    getUserInfo(data, callback){
         let pramas = {
-            url: "/goodsAdd",
+            url: "/getUserInfo1",
             method:"Post",
             data: data
         }
         this.fetchAjax(pramas, callback)
     }
 }
-export default Goods
+export default User

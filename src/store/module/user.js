@@ -2,7 +2,7 @@
 import { setToken, getToken } from "../../util/tools"
 import router from "../../router/index.js"
 import { initRouterNode } from "../../util/menu.js"
-import UserApi from "../../api/user"
+import UserApi from "../../api/carSystem/user"
 let userApi = new UserApi()
 export default {
     state: {

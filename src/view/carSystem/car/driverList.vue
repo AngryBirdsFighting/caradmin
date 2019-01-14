@@ -14,7 +14,7 @@
 <script>
 import iMap from "@com/map/map.vue";
 import iTree from "@com/tree/tree.vue";
-import Driver from "@api/driverList.js";
+import Driver from "@api/carSystem/driverList.js";
 const driver = new Driver();
 export default {
   data() {

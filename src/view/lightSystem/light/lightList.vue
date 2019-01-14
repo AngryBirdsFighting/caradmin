@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Goods from "@api/goods.js";
+import Goods from "@api/goodsSystem/goods.js";
 import iTable from "../../../components/table/table";
 import iPage from "../../../components/page/page";
 import iTree from "@com/tree/tree.vue";
