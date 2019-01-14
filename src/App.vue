@@ -5,5 +5,8 @@
 </template>
 
 <style lang="scss">
+.ivu-layout{
+  background: none !important
+}
 
 </style>

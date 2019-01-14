@@ -2,7 +2,7 @@
 <template>
   <div>
     <Layout>
-      <Sider hide-trigger style="margin-bottom:24px;" >
+      <Sider hide-trigger >
         <slide-menu
           ref="slideMenu"
           :menuList="menuList"
@@ -12,7 +12,7 @@
           @on-select="toPage"
         ></slide-menu>
       </Sider>
-      <Layout :style="{padding: '0 24px 24px',width:'100%'}">
+      <Layout :style="{padding: '0 0 0 12px',width:'100%'}">
         <Content :style="{padding: '24px 0 0 0', background: '#fff'}">
           <router-view></router-view>
         </Content>

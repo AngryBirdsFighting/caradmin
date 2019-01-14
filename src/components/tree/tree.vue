@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tree">
     <Input v-model="filterText" placeholder="输入搜索" clearable style="width: 200px"/>
     <div style="height:800px; overflow-y: auto;">
       <eTree class="filter-tree"
@@ -40,3 +40,5 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+</style>

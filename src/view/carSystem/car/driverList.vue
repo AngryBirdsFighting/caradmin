@@ -1,9 +1,9 @@
 <template>
   <div>
     <Layout class="main-content">
-      <Sider>
+      <!-- <Sider>
         <i-tree :treeData="carTreeData"></i-tree>
-      </Sider>
+      </Sider> -->
       <Layout class="table-content" :style="{ height: height +'px'}">
         <i-map class="map"></i-map>
       </Layout>

@@ -1,19 +1,23 @@
 <template>
   <div>
     <Layout class="main-content">
-    <Sider>
-    
-      <i-tree></i-tree>
-    </Sider>
-    <Layout class="table-content"   :style="{ height: height +'px'}">
-      <Header>Header</Header>
-      <Content>
-        <i-table v-if="goodsList.length > 0 &&  goodsType" :columns="columns" style="height:10vh" :goodsList="goodsList"></i-table>
-      </Content>
-      <Footer>
-        <i-page :listTotal="total"></i-page>
-      </Footer>
-    </Layout>
+      <!-- <Sider>
+        <i-tree></i-tree>
+      </Sider> -->
+      <Layout class="table-content" :style="{ height: height +'px'}">
+        <Header>Header</Header>
+        <Content>
+          <i-table
+            v-if="goodsList.length > 0 &&  goodsType"
+            :columns="columns"
+            style="height:10vh"
+            :goodsList="goodsList"
+          ></i-table>
+        </Content>
+        <Footer>
+          <i-page :listTotal="total"></i-page>
+        </Footer>
+      </Layout>
     </Layout>
   </div>
 </template>
@@ -51,10 +55,9 @@ export default {
                 return item;
               }
             });
-            if(t){
- return h("span", t.name);
+            if (t) {
+              return h("span", t.name);
             }
-           
           }
         },
         {
@@ -64,15 +67,14 @@ export default {
         {
           title: "添加人",
           key: "createUser"
-        },
-      
+        }
       ],
       goodsList: [],
       total: 0,
       goodsType: []
     };
   },
-    computed: {
+  computed: {
     height() {
       let h = window.innerHeight - 114;
       return h;
@@ -99,16 +101,16 @@ export default {
 </script>
 
 <style>
-.ivu-layout-sider{
-  background: #fff !important
-}
-.ivu-layout-footer{
+.ivu-layout-sider {
   background: #fff !important;
 }
-.main-content{
-  padding-left:0!important;
+.ivu-layout-footer {
+  background: #fff !important;
 }
-.table-content{
-  padding-left: 24px
+.main-content {
+  padding-left: 0 !important;
+}
+.table-content {
+  padding-left: 24px;
 }
 </style>
